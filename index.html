@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Search Engine Optimization (SEO) Tags -->
+    <title>Ahariya Dev | Official Live Coding Showroom</title>
+    <meta name="description"
+        content="Welcome to Ahariya Dev official showroom. Explore live coding outputs, premium UI designs, and digital portfolio projects by Ahariya_dev.">
+    <meta name="keywords" content="Ahariya Dev, Ahariya_dev, Ahariya Showroom, Ahariya Coding, Ahariya TikTok">
+    <meta name="author" content="Ahariya Dev">
+    <meta name="robots" content="index, follow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AhariyaDev - Showroom Mainframe</title>
+
+    <!-- Premium Cyber/Tech Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* -------------------------------------------------------------
+           ⚙️ EASY UPDATE CORNER (Yahan Se Kisi Bhi Time Colors Badlein)
+        ------------------------------------------------------------- */
+        :root {
+            --bg-color: #040814;
+            /* Deep Space Black Background */
+            --primary-glow: #00ffff;
+            /* Cyber Blue Electric Glow */
+            --accent-glow: #ff0055;
+            /* Laser Pink Accent Glow */
+            --text-main: #ffffff;
+            /* Pure White Text */
+
+            --heading-font: 'Orbitron', sans-serif;
+            --interface-font: 'Rajdhani', sans-serif;
+        }
+
+        /* -------------------------------------------------------------
+           💎 CORE INTERFACE STYLES (Fixed & Cleaned)
+        ------------------------------------------------------------- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+            font-family: var(--interface-font);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        /* 3D Moving Tech Grid Background */
+        .mainframe-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(to bottom, rgba(4, 8, 20, 0.2), var(--bg-color)),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+            transform: perspective(600px) rotateX(20deg);
+            transform-origin: top;
+            z-index: 1;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        /* --- PAGE 1 WRAPPER --- */
+        .screen-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .central-panel {
+            position: relative;
+            z-index: 12;
+            text-align: center;
+            padding: 50px 60px;
+            border-radius: 24px;
+            background: rgba(4, 8, 20, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .live-calendar-module {
+            font-family: var(--heading-font);
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+
+        .live-clock-module {
+            font-family: var(--heading-font);
+            font-size: 4.8rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            background: linear-gradient(180deg, #ffffff 40%, rgba(0, 255, 255, 0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(0, 255, 255, 0.35);
+            margin-bottom: 30px;
+        }
+
+        .welcome-banner {
+            font-family: var(--heading-font);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 55px;
+            min-height: 35px;
+        }
+
+        .laser-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.4rem;
+            background-color: var(--accent-glow);
+            margin-left: 8px;
+            animation: pulseFlash 0.9s infinite;
+            box-shadow: 0 0 10px var(--accent-glow);
+            vertical-align: middle;
+        }
+
+        .mainframe-trigger-btn {
+            font-family: var(--heading-font);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            color: #ffffff;
+            background: transparent;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 18px 55px;
+            cursor: pointer;
+            position: relative;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            border-radius: 4px;
+        }
+
+        .mainframe-trigger-btn:hover {
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), inset 0 0 15px rgba(0, 255, 255, 0.15);
+            text-shadow: 0 0 8px #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* --- PAGE 2 WRAPPER (TRUST ISSUES) --- */
+        #trust-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(circle at center, #060b19 0%, #02040a 100%);
+            display: none;
+            /* Initially Hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+            opacity: 0;
+            transition: all 1s ease;
+            padding: 20px;
+        }
+
+        .letter-card {
+            max-width: 700px;
+            width: 100%;
+            background: rgba(4, 8, 20, 0.8);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 0, 85, 0.15);
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .letter-content {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .fade-line {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.8s ease;
+        }
+
+        @keyframes pulseFlash {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- GRID LAYER -->
+    <div class="mainframe-grid"></div>
+
+    <!-- -------------------------------------------------------------
+     ⚡ PAGE 1: WELCOME SCREEN INTERFACE
+------------------------------------------------------------- -->
+    <div id="welcome-screen" class="screen-wrapper">
+        <div class="central-panel">
+            <div id="live-calendar" class="live-calendar-module">00 / LOADING / 0000 - SUNDAY</div>
+            <div id="live-clock" class="live-clock-module">00:00:00</div>
+
+            <div class="welcome-banner">
+                <span id="welcome-text-target"></span><span class="laser-cursor"></span>
+            </div>
+
+            <button id="enter-btn" class="mainframe-trigger-btn">
+                Enter Showroom
+            </button>
+        </div>
+    </div>
+
+    <!-- -------------------------------------------------------------
+     💔 PAGE 2: TRUST ISSUES LOG INTERFACE (Roman Urdu)
+------------------------------------------------------------- -->
+    <div id="trust-screen">
+        <div class="letter-card">
+            <!-- Header -->
+            <div
+                style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; margin-bottom: 35px; font-family: var(--heading-font); font-size: 0.8rem; letter-spacing: 2px; color: rgba(255, 255, 255, 0.4);">
+                <div>STATUS: SECURE // SYSTEM_LOG</div>
+                <div style="color: var(--accent-glow); text-shadow: 0 0 8px var(--accent-glow);">[ TRUST_ISSUES ]</div>
+            </div>
+
+            <!-- Content -->
+            <div class="letter-content">
+                <p class="fade-line" style="margin-bottom: 25px;">
+                    Coding ki duniya na bohot haseen hoti hai. Agar aapka logic sahi hai, syntax perfect hai, toh output
+                    hamesha wahi aayega jo aap chahte ho. Machine dhoka nahi deti, na hi kabhi badalti hai.
+                </p>
+
+                <div class="fade-line"
+                    style="height: 1px; width: 50px; background: var(--accent-glow); margin: 30px 0; box-shadow: 0 0 8px var(--accent-glow);">
+                </div>
+
+                <p class="fade-line" style="margin-bottom: 25px;">
+                    Lekin insaan coding ki lines jaise nahi hote. Unka koi fixed rule nahi hota. Aap kisi ko apni poori
+                    life ka root access de dete ho, aur wo ek jhatke mein aapka poora system crash karke chale jaate
+                    hain.
+                </p>
+
+                <p class="fade-line"
+                    style="color: var(--primary-glow); font-family: var(--heading-font); font-size: 1.1rem; letter-spacing: 2px; margin-top: 35px;">
+                    > Trust ek aisa heavy bug hai, jiska koi software patch nahi hota. Be careful.
+                </p>
+            </div>
+
+            <!-- Showroom Bridge Action Button -->
+            <div class="fade-line" style="margin-top: 55px; text-align: right;">
+                <button id="next-showroom-btn"
+                    style="background: transparent; border: none; color: rgba(255,255,255,0.4); font-family: var(--heading-font); font-size: 0.85rem; letter-spacing: 3px; cursor: pointer; text-transform: uppercase; transition: all 0.3s ease;">
+                    Continue To Showroom_
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------------------------------------------------------
+     🧠 INTEGRATED JS ENGINE (Fixed Structure)
+------------------------------------------------------------- -->
+    <script>
+        // 1. LIVE CALENDAR & CLOCK TICKER
+        function runClockSystem() {
+            const now = new Date();
+            let h = now.getHours().toString().padStart(2, '0');
+            let m = now.getMinutes().toString().padStart(2, '0');
+            let s = now.getSeconds().toString().padStart(2, '0');
+
+            const clockEl = document.getElementById('live-clock');
+            if (clockEl) clockEl.textContent = `${h}:${m}:${s}`;
+
+            let date = now.getDate().toString().padStart(2, '0');
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            let month = months[now.getMonth()];
+            let year = now.getFullYear();
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            let day = days[now.getDay()];
+
+            const calEl = document.getElementById('live-calendar');
+            if (calEl) calEl.textContent = `${date} / ${month} / ${year} - ${day}`;
+        }
+        setInterval(runClockSystem, 1000);
+        runClockSystem();
+
+        // 2. TYPEWRITER EFFECT
+        const phrases = ["Welcome To AhariyaDev", "Initializing Showroom...", "Systems Are Optimal."];
+        let pIdx = 0, cIdx = 0, isDeleting = false;
+        const typeTarget = document.getElementById('welcome-text-target');
+
+        function handleTypewriter() {
+            if (!typeTarget) return;
+            const currentStr = phrases[pIdx];
+
+            if (isDeleting) {
+                typeTarget.textContent = currentStr.substring(0, cIdx - 1);
+                cIdx--;
+            } else {
+                typeTarget.textContent = currentStr.substring(0, cIdx + 1);
+                cIdx++;
+            }
+
+            let speed = isDeleting ? 35 : 70;
+
+            if (!isDeleting && cIdx === currentStr.length) {
+                speed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && cIdx === 0) {
+                isDeleting = false;
+                pIdx = (pIdx + 1) % phrases.length;
+                speed = 600;
+            }
+            setTimeout(handleTypewriter, speed);
+        }
+        setTimeout(handleTypewriter, 600);
+
+        // 3. CLEAN NAVIGATION & TRANSITION LOGIC
+        const enterBtn = document.getElementById('enter-btn');
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const trustScreen = document.getElementById('trust-screen');
+        const cardNode = document.querySelector('.letter-card');
+
+        if (enterBtn) {
+            enterBtn.addEventListener('click', function () {
+                // Animate Page 1 Out
+                welcomeScreen.style.opacity = '0';
+                welcomeScreen.style.transform = 'scale(1.05) translateY(-20px)';
+
+                setTimeout(() => {
+                    welcomeScreen.style.display = 'none';
+
+                    // Prepare Page 2 Show
+                    trustScreen.style.display = 'flex';
+
+                    setTimeout(() => {
+                        trustScreen.style.opacity = '1';
+                        if (cardNode) {
+                            cardNode.style.transform = 'translateY(0)';
+                        }
+
+                        // Sequence Fade-in lines
+                        const lines = trustScreen.querySelectorAll('.fade-line');
+                        lines.forEach((line, i) => {
+                            setTimeout(() => {
+                                line.style.opacity = '1';
+                                line.style.transform = 'translateY(0)';
+                            }, (i + 1) * 550);
+                        });
+                    }, 50);
+                }, 800);
+            });
+        }
+
+        // 4. PRE-WIRED NEXT BUTTON (For Page 3 Showroom)
+        const nextBtn = document.getElementById('next-showroom-btn');
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function () {
+                trustScreen.style.opacity = '0';
+                trustScreen.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    trustScreen.style.display = 'none';
+                    // -> Yahan se Page 3 ka activation shuru ho jayega perfectly!
+                }, 800);
+            });
+        }
+    </script>
+    <!-- FILE SYSTEM IS OPEN - CODE NOT TERMINATED - STANDBY FOR PAGE 3 -->
+    <!-- -------------------------------------------------------------
+     💻 PAGE 3: THE AUTOMATIC LIVE SHOWROOM (LAST PAGE)
+------------------------------------------------------------- -->
+    <div id="showroom-screen" style="
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #080f26 0%, #02040a 100%);
+    position: relative;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    z-index: 4;
+    opacity: 0;
+    transition: all 1s ease;
+">
+
+        <!-- Top Navigation Header: Contact & Social Handles -->
+        <div style="
+        max-width: 1200px;
+        margin: 0 auto 50px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        padding-bottom: 20px;
+    ">
+            <div
+                style="font-family: var(--heading-font); font-size: 1.5rem; font-weight: 900; letter-spacing: 3px; color: #ffffff;">
+                AHARIYA<span style="color: var(--primary-glow); text-shadow: 0 0 10px var(--primary-glow);">DEV</span>
+            </div>
+
+            <div
+                style="display: flex; gap: 25px; font-family: var(--heading-font); font-size: 0.9rem; letter-spacing: 2px;">
+                <a href="https://wa.me/923298480733" target="_blank"
+                    style="color: #25D366; text-decoration: none; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 8px rgba(37,211,102,0.3);">
+                    <span>🟢 WA:</span> <span style="color: #ffffff;">0329_8480733</span>
+                </a>
+                <a href="https://www.tiktok.com/@Ahariya_dev" target="_blank"
+                    style="color: #00f0ff; text-decoration: none; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 8px rgba(0,240,255,0.3);">
+                    <span>🎵 TT:</span> <span style="color: #ffffff;">Ahariya_dev</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 🚀 AUTOMATIC SHOWROOM GRID (Iske andar boxes khud ba khud banenge) -->
+        <div id="dynamic-project-grid" style="
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        padding-bottom: 60px;
+    ">
+            <!-- JS will inject all cards here instantly -->
+        </div>
+
+        <!-- PREMIUM POPUP 1: WRITE FEEDBACK MODAL -->
+        <div id="feedback-modal"
+            style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 4, 10, 0.9); z-index: 100; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(8px);">
+            <div
+                style="background: #060b19; border: 2px solid var(--primary-glow); padding: 30px; border-radius: 16px; max-width: 480px; width: 100%; box-shadow: 0 0 40px rgba(0,255,255,0.25); position: relative; box-sizing: border-box;">
+                <h4 id="modal-project-title"
+                    style="font-family: var(--heading-font); color: #fff; margin-top: 0; margin-bottom: 5px; font-size: 1.3rem; letter-spacing: 1px;">
+                    Project Feedback</h4>
+                <p
+                    style="font-family: var(--interface-font); color: #ff0055; font-size: 0.8rem; line-height: 1.4; margin-bottom: 20px; background: rgba(255,0,85,0.08); padding: 8px 12px; border-left: 3px solid #ff0055; border-radius: 4px;">
+                    🔒 <strong>TRUST US:</strong> Sab kuch 100% secure aur live save hai. Apni honest feedback likhein
+                    taake sabko pata chale yeh real hai!
+                </p>
+                <input type="text" id="feedback-user" placeholder="✍️ Apna Name Likhein..."
+                    style="width: 100%; padding: 12px; background: #020408; border: 1px solid rgba(0,255,255,0.2); color: #ffffff; border-radius: 6px; margin-bottom: 15px; font-family: inherit; box-sizing: border-box;">
+                <textarea id="feedback-text" rows="3" placeholder="💬 Apni secure feedback yahan type karein..."
+                    style="width: 100%; padding: 12px; background: #020408; border: 1px solid rgba(0,255,255,0.2); color: #ffffff; border-radius: 6px; margin-bottom: 20px; font-family: inherit; resize: none; box-sizing: border-box;"></textarea>
+                <div style="display: flex; justify-content: flex-end; gap: 12px;">
+                    <button onclick="closeFeedbackModal()"
+                        style="background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #aaa; cursor: pointer; padding: 10px 18px; border-radius: 6px;">Cancel</button>
+                    <button onclick="saveFeedbackSubmit()"
+                        style="background: linear-gradient(135deg, #00ffff 0%, #00bfff 100%); border: none; color: #02040a; font-weight: bold; padding: 10px 22px; border-radius: 6px; cursor: pointer; box-shadow: 0 0 15px rgba(0,255,255,0.3);">Save
+                        Feedback</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PREMIUM POPUP 2: VIEW LIVE TERMINAL LOGS MODAL -->
+        <div id="view-logs-modal"
+            style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 4, 10, 0.92); z-index: 101; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(10px);">
+            <div
+                style="background: #02050d; border: 1px solid #ff0055; padding: 25px; border-radius: 14px; max-width: 550px; width: 100%; box-shadow: 0 0 40px rgba(255,0,85,0.2); box-sizing: border-box; display: flex; flex-direction: column;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,0,85,0.2); padding-bottom: 12px; margin-bottom: 15px;">
+                    <h4 id="logs-title"
+                        style="font-family: var(--heading-font); color: #fff; margin: 0; font-size: 1.1rem; letter-spacing: 1px;">
+                        SECURE LOGS SYSTEM</h4>
+                    <span
+                        style="font-size: 0.75rem; color: #ff0055; background: rgba(255,0,85,0.1); padding: 3px 8px; border-radius: 4px; font-family: monospace;">STATUS:
+                        VERIFIED</span>
+                </div>
+                <div id="logs-terminal-body"
+                    style="background: #000000; border-radius: 8px; padding: 15px; font-family: monospace; font-size: 0.9rem; max-height: 280px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05); line-height: 1.6; box-sizing: border-box;">
+                </div>
+                <button onclick="closeLogsModal()"
+                    style="margin-top: 20px; align-self: flex-end; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 20px; border-radius: 6px; cursor: pointer;">Close
+                    Terminal</button>
+            </div>
+        </div>
+
+        <!-- Outro Module -->
+        <div
+            style="text-align: center; margin-top: 40px; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.03); font-family: var(--heading-font);">
+            <h2
+                style="font-size: 2.2rem; font-weight: 900; letter-spacing: 5px; background: linear-gradient(135deg, #fff 0%, rgba(255,0,85,0.7) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px;">
+                THANK YOU</h2>
+            <p
+                style="font-family: var(--interface-font); color: rgba(255,255,255,0.4); font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase;">
+                Showroom Session Terminated Successfully // AhariyaDev 2026</p>
+        </div>
+
+    </div>
+
+    <!-- -------------------------------------------------------------
+     🧠 INTEGRATED CONTROL PANEL LOGIC (YAHAN APNE LINKS DALO)
+------------------------------------------------------------- -->
+    <script>
+        // =============================================================
+        // ⚙️ CONTROL PANEL: JITNE MARZI LINKS YAHAN COPIED PASTE KARO!
+        // =============================================================
+        // Aapko bas yahan niche link aur naam barhana hai, boxes khud banenge!
+        const MY_PROJECTS_DATABASE = [
+            {
+                title: "⚡ Project_Alpha_Core",
+                liveUrl: "https://example.com/your-code-1" // <-- Yahan apna live link paste karo
+            },
+            {
+                title: "💎 Aesthetic_Clock_UI",
+                liveUrl: "https://example.com/your-code-2" // <-- Doosra link
+            },
+            {
+                title: "🔥 Python_Database_Mesh",
+                liveUrl: "https://example.com/your-code-3" // <-- Teesra link
+            },
+            {
+                title: "🛡️ Cyber_Secure_Panel",
+                liveUrl: "https://example.com/your-code-4" // <-- Chautha link
+            },
+            {
+                title: "Mera Naya TikTok Clone",
+                liveUrl: "https://ahariya.com/my-tiktok-project"
+            },
+            {
+                title: "⚙️ Matrix_Terminal_V2",
+                liveUrl: "https://example.com/your-code-5" // <-- Jitne marzi badhate jao niche comma (,) laga kar!
+            }
+
+        ];
+
+        // Global memory simulation for storing real feedback logs
+        let localFeedbackMemory = {};
+        let activeTargetProject = '';
+
+        // Initialize Showroom Grid automatically from Database Array
+        function buildShowroomGrid() {
+            const grid = document.getElementById('dynamic-project-grid');
+            grid.innerHTML = ''; // Fresh render
+
+            MY_PROJECTS_DATABASE.forEach((project, index) => {
+                // Setup feedback arrays inside memory dynamically
+                if (!localFeedbackMemory[project.title]) {
+                    localFeedbackMemory[project.title] = [];
+                }
+
+                // Generate clean structural card HTML string
+                const cardHtml = `
+                <div class="project-card" 
+                     onmouseenter="activateLiveFrame(this, '${project.liveUrl}')" 
+                     onmouseleave="deactivateLiveFrame(this)" 
+                     style="background: rgba(4, 8, 20, 0.7); border: 1px solid rgba(0, 255, 255, 0.1); border-radius: 12px; padding: 25px; position: relative; transition: all 0.4s ease; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box;">
+                    <div>
+                        <div style="font-family: var(--heading-font); font-size: 1.1rem; color: #ffffff; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>${project.title}</span>
+                            <span class="live-tag" style="font-size: 0.75rem; color: #888; border: 1px solid #444; padding: 2px 6px; border-radius: 4px; font-family: monospace; transition: 0.3s;">STATIC</span>
+                        </div>
+                        
+                        <!-- The Dynamic Display Zone (Container for live view rendering) -->
+                        <div class="display-zone" style="background: #020408; border-radius: 8px; font-family: monospace; font-size: 0.85rem; color: #666; height: 140px; border: 1px solid rgba(255,255,255,0.02); display: flex; justify-content: center; align-items: center; text-align: center; padding: 10px; box-sizing: border-box; overflow: hidden; transition: all 0.3s ease;">
+                            // Touch or Hover to load live view...
+                        </div>
+                    </div>
+
+                    <!-- Interface Control Buttons -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
+                        <button onclick="likeProject(this)" style="background: transparent; border: none; color: #ff0055; cursor: pointer; font-family: var(--heading-font); font-size: 0.85rem; display: flex; align-items: center; gap: 5px; outline: none;">❤️ <span class="like-count">${120 + (index * 13)}</span></button>
+                        <button onclick="triggerFeedbackModal('${project.title}')" style="background: transparent; border: 1px solid rgba(0,255,255,0.2); color: var(--primary-glow); padding: 5px 12px; border-radius: 4px; cursor: pointer; font-family: var(--interface-font); font-size: 0.85rem; outline: none;">Feedback</button>
+                        <button onclick="viewFeedback('${project.title}')" style="background: transparent; border: none; color: #aaa; cursor: pointer; font-family: var(--interface-font); font-size: 0.85rem; text-decoration: underline; outline: none;">View Feedback</button>
+                    </div>
+                </div>
+            `;
+                grid.innerHTML += cardHtml;
+            });
+        }
+
+        // Run dynamic generation as soon as screen compiles
+        buildShowroomGrid();
+
+        // Trigger frame loading when finger/cursor arrives
+        function activateLiveFrame(cardElement, targetUrl) {
+            cardElement.style.borderColor = 'var(--primary-glow)';
+            cardElement.style.boxShadow = '0 10px 30px rgba(0, 255, 255, 0.2)';
+
+            const tag = cardElement.querySelector('.live-tag');
+            tag.textContent = 'LIVE ACTIVE';
+            tag.style.color = '#00ff66';
+            tag.style.borderColor = '#00ff66';
+            tag.style.backgroundColor = 'rgba(0, 255, 102, 0.05)';
+
+            const displayZone = cardElement.querySelector('.display-zone');
+            displayZone.style.borderColor = 'rgba(0, 255, 102, 0.2)';
+
+            // Dynamic Injection of the actual URL into an iframe securely
+            displayZone.innerHTML = `<iframe src="${targetUrl}" style="width: 100%; height: 100%; border: none; background: #fff; border-radius: 4px;"></iframe>`;
+        }
+
+        // Kill frame processing when cursor leaves to preserve RAM memory speed
+        function deactivateLiveFrame(cardElement) {
+            cardElement.style.borderColor = 'rgba(0, 255, 255, 0.1)';
+            cardElement.style.boxShadow = 'none';
+
+            const tag = cardElement.querySelector('.live-tag');
+            tag.textContent = 'STATIC';
+            tag.style.color = '#888';
+            tag.style.borderColor = '#444';
+            tag.style.backgroundColor = 'transparent';
+
+            const displayZone = cardElement.querySelector('.display-zone');
+            displayZone.innerHTML = `// Touch or Hover to load live view...`;
+            displayZone.style.borderColor = 'rgba(255,255,255,0.02)';
+        }
+
+        // Navigation controller from Page 2
+        document.getElementById('next-showroom-btn').addEventListener('click', function () {
+            setTimeout(() => {
+                const showroom = document.getElementById('showroom-screen');
+                showroom.style.display = 'block';
+                setTimeout(() => {
+                    showroom.style.opacity = '1';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 50);
+            }, 800);
+        });
+
+        function likeProject(btnNode) {
+            const countNode = btnNode.querySelector('.like-count');
+            countNode.textContent = parseInt(countNode.textContent) + 1;
+            btnNode.style.transform = 'scale(1.2)';
+            setTimeout(() => btnNode.style.transform = 'scale(1)', 150);
+        }
+
+        function triggerFeedbackModal(projectName) {
+            activeTargetProject = projectName;
+            document.getElementById('modal-project-title').textContent = `Feedback For ${projectName}`;
+            document.getElementById('feedback-modal').style.display = 'flex';
+        }
+
+        function closeFeedbackModal() {
+            document.getElementById('feedback-modal').style.display = 'none';
+            document.getElementById('feedback-user').value = '';
+            document.getElementById('feedback-text').value = '';
+        }
+
+        function saveFeedbackSubmit() {
+            const user = document.getElementById('feedback-user').value.trim();
+            const text = document.getElementById('feedback-text').value.trim();
+            if (!user || !text) return alert('Fill all fields!');
+            localFeedbackMemory[activeTargetProject].push({ name: user, msg: text });
+            closeFeedbackModal();
+        }
+
+        function viewFeedback(projectName) {
+            const logs = localFeedbackMemory[projectName] || [];
+            const terminalBody = document.getElementById('logs-terminal-body');
+            document.getElementById('logs-title').textContent = `${projectName.toUpperCase()} // SYSTEM LOGS`;
+            terminalBody.innerHTML = '';
+
+            if (logs.length === 0) {
+                terminalBody.innerHTML = `<span style="color: #ff0055;">// No log entries detected. Be the first to type feedback!</span>`;
+            } else {
+                logs.forEach((log, index) => {
+                    const logEntry = document.createElement('div');
+                    logEntry.style.marginBottom = '12px';
+                    logEntry.innerHTML = `
+                    <span style="color: #ff0055;">[Log_0${index + 1}]:</span> 
+                    <span style="color: #00ff66; font-weight: bold;">${log.name}</span> <span style="color:#666;">says:</span><br>
+                    <span style="color: #ffffff; padding-left: 10px; display: inline-block;">"${log.msg}"</span>
+                `;
+                    terminalBody.appendChild(logEntry);
+                });
+            }
+            document.getElementById('view-logs-modal').style.display = 'flex';
+        }
+
+        function closeLogsModal() {
+            document.getElementById('view-logs-modal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
