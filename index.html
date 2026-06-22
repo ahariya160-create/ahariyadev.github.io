@@ -3,20 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <title>Ahariya Dev | Official Live Coding Showroom</title>
-    <meta name="description" content="Welcome to Ahariya Dev official showroom. Explore live coding outputs, premium UI designs, and digital portfolio projects by Ahariya_dev.">
-    <meta name="keywords" content="Ahariya Dev, Ahariya_dev, Ahariya Showroom, Ahariya Coding, Ahariya TikTok">
-    <meta name="author" content="Ahariya Dev">
-    <meta name="robots" content="index, follow">
-
+    <title>Ahariya Dev | Premium Fluid Showroom</title>
     <style>
         :root {
-            --bg-color: #02040a;
-            --primary-glow: #00ffff;
-            --secondary-glow: #ff0055;
-            --heading-font: 'Share Tech Mono', monospace;
-            --interface-font: 'Inter', sans-serif;
+            --bg-base: #09090b;
+            --fluid-purple: #7c3aed;
+            --fluid-pink: #db2777;
+            --glass-card: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.07);
         }
 
         * {
@@ -27,15 +21,57 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: #ffffff;
-            font-family: var(--interface-font);
+            background-color: var(--bg-base);
+            color: #f4f4f5;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             width: 100%;
             min-height: 100vh;
+            position: relative;
         }
 
-        /* Standardized Screen Structure */
+        /* 🌊 Fluid Liquid Background Blobs */
+        .fluid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .fluid-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.25;
+            animation: liquidMove 25s infinite alternate ease-in-out;
+        }
+
+        .blob-left {
+            width: 500px;
+            height: 500px;
+            background: var(--fluid-purple);
+            top: -10%;
+            left: -15%;
+        }
+
+        .blob-right {
+            width: 600px;
+            height: 600px;
+            background: var(--fluid-pink);
+            bottom: -15%;
+            right: -15%;
+            animation-delay: -7s;
+        }
+
+        @keyframes liquidMove {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate(80px, 50px) scale(1.1) rotate(180deg); }
+            100% { transform: translate(-40px, 80px) scale(0.9) rotate(360deg); }
+        }
+
         .screen {
             width: 100%;
             min-height: 100vh;
@@ -43,133 +79,118 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 24px;
             box-sizing: border-box;
-            position: relative;
         }
 
-        .cyber-box {
+        /* Premium Studio Floating Box */
+        .studio-card {
             width: 100%;
             max-width: 450px;
-            background: rgba(4, 8, 20, 0.6);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px 20px;
+            background: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 45px 30px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
         }
 
-        .neon-btn {
+        /* Creative Studio Action Button */
+        .studio-btn {
             width: 100%;
-            background: transparent;
-            border: 1px solid var(--primary-glow);
+            background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+            border: none;
             color: #ffffff;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 18px;
+            border-radius: 16px;
             cursor: pointer;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(0,255,255,0.1);
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .neon-btn:hover, .neon-btn:active {
-            background: var(--primary-glow);
-            color: #000;
-            box-shadow: 0 0 25px var(--primary-glow);
+        .studio-btn:hover, .studio-btn:active {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(219, 39, 119, 0.5);
+            opacity: 0.95;
+        }
+
+        /* Responsive Grid Style */
+        .asymmetric-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div id="welcome-screen" class="screen" style="background: radial-gradient(circle at center, #0a1128 0%, #02040a 100%);">
-        <div class="cyber-box">
-            <div style="font-family: var(--heading-font); color: rgba(255,255,255,0.6); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 10px;">
-                20 / Jun / 2026 - Saturday
+    <!-- Liquid Background Shapes -->
+    <div class="fluid-bg">
+        <div class="fluid-blob blob-left"></div>
+        <div class="fluid-blob blob-right"></div>
+    </div>
+
+    <!-- ✨ PAGE 1: CREATIVE STUDIO WELCOME -->
+    <div id="welcome-screen" class="screen">
+        <div class="studio-card">
+            <div style="font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; color: #a1a1aa; font-weight: 700; margin-bottom: 15px;">
+                22 / Jun / 2026
             </div>
-            <div style="font-family: var(--heading-font); font-size: 3rem; font-weight: 900; color: var(--primary-glow); text-shadow: 0 0 20px rgba(0,255,255,0.4); margin-bottom: 30px;">
-                08:43:31
+            <div style="font-size: 3.5rem; font-weight: 800; background: linear-gradient(to bottom right, #ffffff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px; letter-spacing: -1px;">
+                08:38:05
             </div>
-            <div style="font-family: var(--heading-font); font-size: 1.2rem; letter-spacing: 3px; color: #fff; margin-bottom: 40px;">
-                INITIALIZING SHOWROOM<span style="color:var(--secondary-glow); animation: blink 1s infinite;">|</span>
+            <div style="font-size: 1.05rem; color: #d4d4d8; font-weight: 400; margin-bottom: 40px; line-height: 1.6; letter-spacing: 0.3px;">
+                Experience digital craftsmanship at its finest.
             </div>
-            <button class="neon-btn" onclick="goToPage2()">Enter Showroom</button>
+            <button class="studio-btn" onclick="goToPage2()">View Showcase</button>
         </div>
     </div>
 
-    <div id="log-screen" class="screen" style="display: none; background: #040814; justify-content: flex-start; padding-top: 40px;">
-        <div class="cyber-box" style="max-width: 600px; text-align: left; background: transparent; border: none; box-shadow: none;">
-            
-            <div style="margin-bottom: 30px; line-height: 1.6; color: #e0e0e0; font-size: 0.95rem;">
+    <!-- 📜 PAGE 2: PHILOSOPHY LOG -->
+    <div id="log-screen" class="screen" style="display: none; justify-content: flex-start; padding-top: 60px;">
+        <div class="studio-card" style="max-width: 580px; text-align: left; background: transparent; border: none; box-shadow: none; backdrop-filter: none;">
+            <div style="font-size: 2rem; font-weight: 800; margin-bottom: 30px; letter-spacing: -0.5px; background: linear-gradient(to right, #ffffff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                The Developer's Mindset_
+            </div>
+            <div style="margin-bottom: 25px; line-height: 1.9; color: #a1a1aa; font-size: 1.05rem;">
                 Coding ki duniya na bohot haseen hoti hai. Agar aapka logic sahi hai, syntax perfect hai, toh output hamesha wahi aaye ga jo aap chahte ho. Machine dhoka nahi deti, na hi kabhi badalti hai.
             </div>
-
-            <div style="width: 40px; height: 2px; background: var(--secondary-glow); margin-bottom: 30px;"></div>
-
-            <div style="margin-bottom: 40px; line-height: 1.6; color: #e0e0e0; font-size: 0.95rem;">
+            <div style="margin-bottom: 40px; line-height: 1.9; color: #a1a1aa; font-size: 1.05rem;">
                 Lekin insaan coding ki lines jaise nahi hote. Unka koi fixed rule nahi hota. Aap kisi ko apni poori life ka root access de dete ho, aur woh ek jhatke mein aapka poora system crash karke chale jaate hain.
             </div>
-
-            <div style="color: var(--primary-glow); background: rgba(0,255,255,0.05); border-left: 3px solid var(--primary-glow); padding: 15px; border-radius: 4px; font-size: 0.9rem; line-height: 1.5; margin-bottom: 40px;">
-                <strong>&gt; Trust ek aisa heavy bug hai, jiska koi software patch nahi hota. Be careful.</strong>
+            <div style="background: rgba(124, 58, 237, 0.06); border-left: 3px solid #7c3aed; padding: 20px; border-radius: 14px; font-size: 1rem; line-height: 1.7; margin-bottom: 45px; color: #e4e4e7; font-style: italic;">
+                "Trust ek aisa heavy bug hai, jiska koi software patch nahi hota. Be careful."
             </div>
-
-            <button class="neon-btn" id="next-showroom-btn">Continue To Showroom_</button>
+            <button class="studio-btn" onclick="goToPage3()">Enter Full Showroom</button>
         </div>
     </div>
 
-    <div id="showroom-screen" style="display: none; width: 100%; min-height: 100vh; background: radial-gradient(circle at top, #080f26 0%, #02040a 100%); padding: 30px 15px; box-sizing: border-box;">
-
-        <div style="max-width: 1200px; margin: 0 auto 40px auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border-bottom: 1px solid rgba(0, 255, 255, 0.1); padding-bottom: 15px;">
-            <div style="font-family: var(--heading-font); font-size: 1.4rem; font-weight: 900; letter-spacing: 2px;">
-                AHARIYA<span style="color: var(--primary-glow); text-shadow: 0 0 10px var(--primary-glow);">DEV</span>
+    <!-- 💻 PAGE 3: SHOWROOM CORE -->
+    <div id="showroom-screen" style="display: none; width: 100%; min-height: 100vh; padding: 50px 24px; box-sizing: border-box;">
+        <div style="max-width: 1100px; margin: 0 auto 60px auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 25px;">
+            <div style="font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px;">
+                AHARIYA<span style="color: #7c3aed;">DEV</span>
             </div>
-            <div style="display: flex; gap: 15px; font-family: var(--heading-font); font-size: 0.8rem; flex-wrap: wrap;">
-                <a href="https://wa.me/923298480733" target="_blank" style="color: #25D366; text-decoration: none;">🟢 WA: <span style="color: #fff;">0329_8480733</span></a>
-                <a href="https://www.tiktok.com/@Ahariya_dev" target="_blank" style="color: #00f0ff; text-decoration: none;">🎵 TT: <span style="color: #fff;">Ahariya_dev</span></a>
-            </div>
-        </div>
-
-        <div id="dynamic-project-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; padding-bottom: 40px;">
-            </div>
-
-        <div id="feedback-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 4, 10, 0.9); z-index: 100; justify-content: center; align-items: center; padding: 15px; backdrop-filter: blur(8px);">
-            <div style="background: #060b19; border: 2px solid var(--primary-glow); padding: 25px 20px; border-radius: 12px; max-width: 430px; width: 100%; box-shadow: 0 0 30px rgba(0,255,255,0.2); box-sizing: border-box;">
-                <h4 id="modal-project-title" style="color: #fff; margin-bottom: 10px; font-family: var(--heading-font);">Feedback Terminal</h4>
-                <p style="color: var(--secondary-glow); font-size: 0.75rem; background: rgba(255,0,85,0.05); padding: 8px; border-left: 3px solid var(--secondary-glow); border-radius: 4px; margin-bottom: 15px;">
-                    🔒 <strong>TRUST US:</strong> Live secure and real save ledger active.
-                </p>
-                <input type="text" id="feedback-user" placeholder="✍️ Apna Name Likhein..." style="width: 100%; padding: 12px; background: #020408; border: 1px solid rgba(0,255,255,0.2); color: #fff; border-radius: 6px; margin-bottom: 12px; outline: none; font-size: 0.9rem;">
-                <textarea id="feedback-text" rows="3" placeholder="💬 Apni honest feedback likhein..." style="width: 100%; padding: 12px; background: #020408; border: 1px solid rgba(0,255,255,0.2); color: #fff; border-radius: 6px; margin-bottom: 15px; resize: none; outline: none; font-size: 0.9rem;"></textarea>
-                <div style="display: flex; justify-content: flex-end; gap: 10px;">
-                    <button onclick="closeFeedbackModal()" style="background: transparent; border: none; color: #aaa; cursor: pointer; padding: 8px 15px;">Cancel</button>
-                    <button onclick="saveFeedbackSubmit()" style="background: var(--primary-glow); border: none; color: #000; font-weight: bold; padding: 8px 18px; border-radius: 4px; cursor: pointer;">Save Feedback</button>
-                </div>
+            <div style="display: flex; gap: 25px; font-size: 0.9rem; font-weight: 500;">
+                <a href="https://wa.me/923298480733" target="_blank" style="color: #f4f4f5; text-decoration: none; display: flex; align-items: center; gap: 6px;">🟢 Chat: <span style="color: #7c3aed;">0329_8480733</span></a>
+                <a href="https://www.tiktok.com/@Ahariya_dev" target="_blank" style="color: #f4f4f5; text-decoration: none; display: flex; align-items: center; gap: 6px;">🎵 TikTok: <span style="color: #db2777;">Ahariya_dev</span></a>
             </div>
         </div>
 
-        <div id="view-logs-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 4, 10, 0.95); z-index: 101; justify-content: center; align-items: center; padding: 15px; backdrop-filter: blur(8px);">
-            <div style="background: #02050d; border: 1px solid var(--secondary-glow); padding: 20px; border-radius: 12px; max-width: 480px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column;">
-                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,0,85,0.2); padding-bottom: 10px; margin-bottom: 15px;">
-                    <h4 id="logs-title" style="color: #fff; font-family: var(--heading-font); font-size: 1rem;">LOGS ENGINE</h4>
-                    <span style="font-size: 0.7rem; color: var(--secondary-glow); background: rgba(255,0,85,0.1); padding: 2px 6px; border-radius: 4px;">SECURE</span>
-                </div>
-                <div id="logs-terminal-body" style="background: #000; border-radius: 6px; padding: 12px; font-family: monospace; font-size: 0.85rem; max-height: 250px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05);"></div>
-                <button onclick="closeLogsModal()" style="margin-top: 15px; align-self: flex-end; background: rgba(255,255,255,0.05); border: 1px solid #444; color: #fff; padding: 6px 15px; border-radius: 4px; cursor: pointer;">Close Logs</button>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px; padding-top: 35px; border-top: 1px solid rgba(255,255,255,0.03);">
-            <h2 style="font-family: var(--heading-font); font-size: 1.8rem; letter-spacing: 4px; color: #fff;">THANK YOU</h2>
-            <p style="color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 5px;">Showroom Session Terminated Successfully // AhariyaDev 2026</p>
+        <div id="dynamic-project-grid" class="asymmetric-grid">
+            <!-- JS Injector -->
         </div>
     </div>
 
     <script>
-        // CONTROL PANEL CONTROL ROOM: Paste your links here
         const MY_PROJECTS_DATABASE = [
             { title: "⚡ Project_Alpha_Core", liveUrl: "https://example.com/demo1" },
             { title: "💎 Aesthetic_Clock_UI", liveUrl: "https://example.com/demo2" },
@@ -179,110 +200,31 @@
             { title: "🎬 Mera Naya TikTok Clone", liveUrl: "https://example.com/demo6" }
         ];
 
-        let localFeedbackMemory = {};
-        let activeTargetProject = '';
-
         function goToPage2() {
             document.getElementById('welcome-screen').style.display = 'none';
             document.getElementById('log-screen').style.display = 'flex';
         }
 
-        document.getElementById('next-showroom-btn').addEventListener('click', function() {
+        function goToPage3() {
             document.getElementById('log-screen').style.display = 'none';
             document.getElementById('showroom-screen').style.display = 'block';
-            buildShowroomGrid();
-            window.scrollTo({ top: 0 });
-        });
+            buildGrid();
+        }
 
-        function buildShowroomGrid() {
+        function buildGrid() {
             const grid = document.getElementById('dynamic-project-grid');
             grid.innerHTML = '';
-
-            MY_PROJECTS_DATABASE.forEach((project, index) => {
-                if (!localFeedbackMemory[project.title]) {
-                    localFeedbackMemory[project.title] = [];
-                }
-
-                const cardHtml = `
-                    <div style="background: rgba(4, 8, 20, 0.7); border: 1px solid rgba(0, 255, 255, 0.1); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; box-sizing: border-box;">
+            MY_PROJECTS_DATABASE.forEach((p) => {
+                grid.innerHTML += `
+                    <div style="background: var(--glass-card); border: 1px solid var(--glass-border); border-radius: 24px; padding: 28px; min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: transform 0.3s ease;">
                         <div>
-                            <div style="font-family: var(--heading-font); font-size: 1rem; color: #fff; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-                                <span>${project.title}</span>
-                                <span class="live-tag" style="font-size: 0.7rem; color: #888; border: 1px solid #444; padding: 1px 6px; border-radius: 4px;">STATIC</span>
-                            </div>
-                            <div class="display-zone" style="background: #020408; border-radius: 6px; font-family: monospace; font-size: 0.8rem; color: #555; height: 130px; border: 1px solid rgba(255,255,255,0.02); display: flex; justify-content: center; align-items: center; text-align: center; overflow: hidden;">
-                                <button onclick="activateMobileView(this, '${project.liveUrl}')" style="background: rgba(0,255,255,0.05); border: 1px solid rgba(0,255,255,0.1); color: var(--primary-glow); padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Tap to Load Output</button>
+                            <h3 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 20px; font-weight: 700; letter-spacing: -0.3px;">${p.title}</h3>
+                            <div style="background: rgba(0,0,0,0.2); height: 110px; border-radius: 16px; display: flex; justify-content: center; align-items: center; border: 1px solid rgba(255,255,255,0.02);">
+                                <a href="${p.liveUrl}" target="_blank" style="background: #ffffff; color: #000000; padding: 10px 22px; border-radius: 12px; text-decoration: none; font-size: 0.85rem; font-weight: 700; box-shadow: 0 4px 15px rgba(255,255,255,0.1);">Explore Output</a>
                             </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; font-size: 0.8rem;">
-                            <button onclick="likeProject(this)" style="background:transparent; border:none; color:#ff0055; cursor:pointer;">❤️ <span class="like-count">${102 + index}</span></button>
-                            <button onclick="triggerFeedbackModal('${project.title}')" style="background:transparent; border:1px solid rgba(0,255,255,0.2); color:var(--primary-glow); padding:3px 8px; border-radius:4px; cursor:pointer;">Feedback</button>
-                            <button onclick="viewFeedback('${project.title}')" style="background:transparent; border:none; color:#aaa; cursor:pointer; text-decoration:underline;">Logs</button>
-                        </div>
-                    </div>
-                `;
-                grid.innerHTML += cardHtml;
+                    </div>`;
             });
-        }
-
-        function activateMobileView(btnElement, targetUrl) {
-            const displayZone = btnElement.parentElement;
-            const card = displayZone.parentElement.parentElement;
-            
-            const tag = card.querySelector('.live-tag');
-            tag.textContent = 'LIVE VIEW';
-            tag.style.color = '#00ff66';
-            tag.style.borderColor = '#00ff66';
-
-            displayZone.innerHTML = `<iframe src="${targetUrl}" style="width: 100%; height: 100%; border: none; background: #fff;"></iframe>`;
-        }
-
-        function likeProject(btnNode) {
-            const countNode = btnNode.querySelector('.like-count');
-            countNode.textContent = parseInt(countNode.textContent) + 1;
-        }
-
-        function triggerFeedbackModal(projectName) {
-            activeTargetProject = projectName;
-            document.getElementById('modal-project-title').textContent = `Feedback: ${projectName}`;
-            document.getElementById('feedback-modal').style.display = 'flex';
-        }
-
-        function closeFeedbackModal() {
-            document.getElementById('feedback-modal').style.display = 'none';
-            document.getElementById('feedback-user').value = '';
-            document.getElementById('feedback-text').value = '';
-        }
-
-        function saveFeedbackSubmit() {
-            const user = document.getElementById('feedback-user').value.trim();
-            const text = document.getElementById('feedback-text').value.trim();
-            if(!user || !text) return alert('Please fill all fields!');
-            localFeedbackMemory[activeTargetProject].push({name: user, msg: text});
-            closeFeedbackModal();
-        }
-
-        function viewFeedback(projectName) {
-            const logs = localFeedbackMemory[projectName] || [];
-            const terminalBody = document.getElementById('logs-terminal-body');
-            document.getElementById('logs-title').textContent = `LOGS // ${projectName}`;
-            terminalBody.innerHTML = '';
-            
-            if(logs.length === 0) {
-                terminalBody.innerHTML = `<span style="color:#ff0055;">// No records found.</span>`;
-            } else {
-                logs.forEach((log, index) => {
-                    const div = document.createElement('div');
-                    div.style.marginBottom = '10px';
-                    div.innerHTML = `<span style="color:#ff0055;">[0${index+1}]:</span> <span style="color:#00ff66; font-weight:bold;">${log.name}</span><br><span style="color:#fff; padding-left:10px;">"${log.msg}"</span>`;
-                    terminalBody.appendChild(div);
-                });
-            }
-            document.getElementById('view-logs-modal').style.display = 'flex';
-        }
-
-        function closeLogsModal() {
-            document.getElementById('view-logs-modal').style.display = 'none';
         }
     </script>
 </body>
