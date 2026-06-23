@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ahariya Dev | Premium Fluid Showroom</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --bg-base: #09090b;
+            --bg-base: #060608;
             --fluid-purple: #7c3aed;
             --fluid-pink: #db2777;
-            --glass-card: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.07);
+            --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            --glass-card: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.05);
         }
 
         * {
@@ -30,7 +35,7 @@
             position: relative;
         }
 
-        /* 🌊 Fluid Liquid Background Blobs */
+        /* 🌊 Fluid Background Blobs */
         .fluid-bg {
             position: fixed;
             top: 0;
@@ -45,7 +50,7 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(140px);
-            opacity: 0.25;
+            opacity: 0.18;
             animation: liquidMove 25s infinite alternate ease-in-out;
         }
 
@@ -67,9 +72,47 @@
         }
 
         @keyframes liquidMove {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            50% { transform: translate(80px, 50px) scale(1.1) rotate(180deg); }
-            100% { transform: translate(-40px, 80px) scale(0.9) rotate(360deg); }
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(80px, 50px) scale(1.1) rotate(180deg);
+            }
+
+            100% {
+                transform: translate(-40px, 80px) scale(0.9) rotate(360deg);
+            }
+        }
+
+        /* Cinematic Golden Flash Overlay */
+        .gold-wipe-overlay {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(187, 147, 59, 0.8), #fcf6ba, rgba(170, 119, 28, 0.9), transparent);
+            z-index: 9999;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes goldFlashWipe {
+            0% {
+                left: -100%;
+                opacity: 1;
+            }
+
+            50% {
+                left: 0%;
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
         }
 
         .screen {
@@ -81,151 +124,601 @@
             align-items: center;
             padding: 24px;
             box-sizing: border-box;
+            transition: opacity 0.6s ease;
         }
 
-        /* Premium Studio Floating Box */
-        .studio-card {
-            width: 100%;
-            max-width: 450px;
-            background: var(--glass-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 45px 30px;
+        /* Golden Live Text Welcome Style */
+        .welcome-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
             text-align: center;
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            min-height: 80px;
         }
 
-        /* Creative Studio Action Button */
-        .studio-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
-            border: none;
-            color: #ffffff;
-            padding: 18px;
-            border-radius: 16px;
-            cursor: pointer;
+        @media (max-width: 768px) {
+            .welcome-title {
+                font-size: 2.2rem;
+                min-height: 60px;
+            }
+        }
+
+        /* Enter Button Style */
+        .enter-showroom-btn {
+            background: transparent;
+            border: 1px solid #bf953f;
+            color: #fcf6ba;
+            padding: 16px 40px;
             font-size: 1rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 0 15px rgba(191, 149, 63, 0.1);
         }
 
-        .studio-btn:hover, .studio-btn:active {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(219, 39, 119, 0.5);
-            opacity: 0.95;
+        .enter-showroom-btn:hover {
+            background: var(--gold-gradient);
+            color: #000;
+            border-color: transparent;
+            box-shadow: 0 0 35px rgba(252, 246, 186, 0.6);
+            transform: scale(1.05);
         }
 
-        /* Responsive Grid Style */
-        .asymmetric-grid {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+        .enter-showroom-btn.clicked {
+            animation: buttonBrightPulse 0.4s forwards;
+        }
+
+        @keyframes buttonBrightPulse {
+            0% {
+                transform: scale(1.05);
+                box-shadow: 0 0 35px rgba(252, 246, 186, 0.6);
+                filter: brightness(1);
+            }
+
+            50% {
+                transform: scale(0.98);
+                box-shadow: 0 0 70px #ffffff;
+                filter: brightness(2);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(252, 246, 186, 0.2);
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <!-- Liquid Background Shapes -->
+    <!-- Cinematic Golden Flash Overlay -->
+    <div id="gold-wipe" class="gold-wipe-overlay"></div>
+
+    <!-- Background Blobs -->
     <div class="fluid-bg">
         <div class="fluid-blob blob-left"></div>
         <div class="fluid-blob blob-right"></div>
     </div>
 
-    <!-- ✨ PAGE 1: CREATIVE STUDIO WELCOME -->
+    <!-- ✨ PAGE 1: GOLDEN CINEMATIC ENTRY -->
     <div id="welcome-screen" class="screen">
-        <div class="studio-card">
-            <div style="font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; color: #a1a1aa; font-weight: 700; margin-bottom: 15px;">
-                22 / Jun / 2026
+        <h1 id="live-welcome-text" class="welcome-title"></h1>
+        <button id="enter-btn" class="enter-showroom-btn" onclick="triggerCinematicTransition()">Enter The
+            Showroom</button>
+    </div>
+    <!-- 📜 PAGE 2: PHILOSOPHY, AD CLOCK & TRUST LOG -->
+    <div id="log-screen" class="screen"
+        style="display: none; justify-content: flex-start; padding-top: 50px; opacity: 0; transition: all 0.6s ease;">
+
+        <!-- 🕒 Ahariya_Dev Premium 12-Hour Luxury Clock -->
+        <div
+            style="width: 220px; height: 220px; border: 4px solid rgba(191, 149, 63, 0.3); border-radius: 50%; position: relative; background: rgba(0,0,0,0.4); box-shadow: 0 0 30px rgba(191, 149, 63, 0.15), inset 0 0 20px rgba(0,0,0,0.8); margin-bottom: 40px;">
+            <!-- Clock Digits (1 to 12 Layout) -->
+            <div
+                style="position: absolute; width: 100%; height: 100%; font-weight: 700; color: #bf953f; font-size: 0.9rem; padding: 10px;">
+                <div style="position: absolute; top: 8px; left: 50%; transform: translateX(-50%);">12</div>
+                <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">3</div>
+                <div style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);">6</div>
+                <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">9</div>
             </div>
-            <div style="font-size: 3.5rem; font-weight: 800; background: linear-gradient(to bottom right, #ffffff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px; letter-spacing: -1px;">
-                08:38:05
+            <!-- Brand Tag Inside Clock -->
+            <div
+                style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); font-size: 0.6rem; letter-spacing: 1px; color: rgba(255,255,255,0.3); font-weight: 800; text-align: center; width: 100%;">
+                AHARIYA_DEV</div>
+
+            <!-- Clock Hands Components -->
+            <div id="ahariya-hour"
+                style="position: absolute; width: 4px; height: 50px; background: #ffffff; bottom: 50%; left: calc(50% - 2px); transform-origin: bottom center; border-radius: 4px; z-index: 3;">
             </div>
-            <div style="font-size: 1.05rem; color: #d4d4d8; font-weight: 400; margin-bottom: 40px; line-height: 1.6; letter-spacing: 0.3px;">
-                Experience digital craftsmanship at its finest.
+            <div id="ahariya-min"
+                style="position: absolute; width: 3px; height: 75px; background: #bf953f; bottom: 50%; left: calc(50% - 1.5px); transform-origin: bottom center; border-radius: 3px; z-index: 4;">
             </div>
-            <button class="studio-btn" onclick="goToPage2()">View Showcase</button>
+            <div id="ahariya-sec"
+                style="position: absolute; width: 1.5px; height: 85px; background: #db2777; bottom: 50%; left: calc(50% - 0.75px); transform-origin: bottom center; z-index: 5;">
+            </div>
+            <!-- Center Pin -->
+            <div
+                style="position: absolute; width: 10px; height: 10px; background: #fcf6ba; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; box-shadow: 0 0 8px #ffffff;">
+            </div>
+        </div>
+
+        <!-- 🛡️ Trust Window Card -->
+        <div class="studio-card"
+            style="max-width: 580px; text-align: left; background: rgba(255,255,255,0.01); border: 1px solid rgba(191, 149, 63, 0.15); box-shadow: 0 20px 50px rgba(0,0,0,0.5); padding: 35px 30px; position: relative;">
+
+            <div
+                style="font-size: 1.4rem; font-weight: 800; margin-bottom: 25px; letter-spacing: -0.3px; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase;">
+                🔒 Code Integrity & User Trust_
+            </div>
+
+            <!-- Target for Live Text Generation -->
+            <div id="live-trust-box" style="min-height: 180px;"></div>
+
+            <!-- Deep Impressive Touchy One-Liner Quote Line -->
+            <div
+                style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 1.05rem; line-height: 1.6; color: #ffffff; font-weight: 600; font-style: italic; text-align: center; letter-spacing: 0.3px;">
+                "Log badal jaate hain par mera likha hua code aur mera kiya hua wada kabhi apni jagah se nahi hilta. I
+                am Real."
+            </div>
+
+            <!-- Showroom Trigger Button -->
+            <button class="enter-showroom-btn" style="width: 100%; margin-top: 35px; border-radius: 14px;"
+                onclick="triggerShowroomTransition()">Explore Full Showroom</button>
         </div>
     </div>
+    <!-- 💻 PAGE 3: SHOWROOM CORE OVERVIEW -->
+    <div id="showroom-screen"
+        style="display: none; width: 100%; min-height: 100vh; padding: 60px 24px; box-sizing: border-box; opacity: 0; transition: opacity 0.6s ease;">
 
-    <!-- 📜 PAGE 2: PHILOSOPHY LOG -->
-    <div id="log-screen" class="screen" style="display: none; justify-content: flex-start; padding-top: 60px;">
-        <div class="studio-card" style="max-width: 580px; text-align: left; background: transparent; border: none; box-shadow: none; backdrop-filter: none;">
-            <div style="font-size: 2rem; font-weight: 800; margin-bottom: 30px; letter-spacing: -0.5px; background: linear-gradient(to right, #ffffff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                The Developer's Mindset_
+        <!-- Premium Minimalist Brand Header Navbar -->
+        <div
+            style="max-width: 1100px; margin: 0 auto 50px auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 25px;">
+            <div
+                style="font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; font-family: 'Playfair Display', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                Ahariya_Dev
             </div>
-            <div style="margin-bottom: 25px; line-height: 1.9; color: #a1a1aa; font-size: 1.05rem;">
-                Coding ki duniya na bohot haseen hoti hai. Agar aapka logic sahi hai, syntax perfect hai, toh output hamesha wahi aaye ga jo aap chahte ho. Machine dhoka nahi deti, na hi kabhi badalti hai.
+            <div style="display: flex; gap: 25px; font-size: 0.9rem; font-weight: 600; flex-wrap: wrap;">
+                <a href="https://wa.me/923288480733" target="_blank"
+                    style="color: #f4f4f5; text-decoration: none; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.03); padding: 8px 16px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05);">🟢
+                    WhatsApp: <span style="color: #bf953f; font-weight: 700;">03288480733</span></a>
+                <a href="https://www.tiktok.com/@ahariyadev" target="_blank"
+                    style="color: #f4f4f5; text-decoration: none; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.03); padding: 8px 16px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05);">🎵
+                    TikTok: <span style="color: #db2777; font-weight: 700;">@ahariyadev</span></a>
             </div>
-            <div style="margin-bottom: 40px; line-height: 1.9; color: #a1a1aa; font-size: 1.05rem;">
-                Lekin insaan coding ki lines jaise nahi hote. Unka koi fixed rule nahi hota. Aap kisi ko apni poori life ka root access de dete ho, aur woh ek jhatke mein aapka poora system crash karke chale jaate hain.
+        </div>
+
+        <!-- Scaling Showcase Asymmetric Master Grid -->
+        <div id="ahariya-dynamic-grid" class="asymmetric-grid">
+            <!-- JavaScript targets inject items directly here loops -->
+        </div>
+
+        <!-- Clean Floating Navigation to Feedback Portal -->
+        <div style="max-width: 1100px; margin: 60px auto 0 auto; text-align: center;">
+            <button class="enter-showroom-btn" style="padding: 16px 50px; font-size: 0.95rem;"
+                onclick="triggerFeedbackTransition()">
+                Leave Your Sincere Feedback ✨
+            </button>
+        </div>
+
+    </div>
+    <!-- 💬 PAGE 4: LIVE COMMUNITY FEEDBACK HUB -->
+    <div id="feedback-screen" class="screen"
+        style="display: none; justify-content: flex-start; padding-top: 40px; opacity: 0; transition: opacity 0.6s ease; max-height: 100vh; overflow-y: auto;">
+
+        <!-- Top Action Bar for instant Skip -->
+        <div
+            style="width: 100%; max-width: 550px; display: flex; justify-content: flex-end; margin-bottom: 10px; padding: 0 10px;">
+            <button onclick="triggerPage5Transition()"
+                style="background: transparent; border: none; color: rgba(255,255,255,0.4); font-size: 0.85rem; font-weight: 700; cursor: pointer; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s ease;">Skip
+                ✕</button>
+        </div>
+
+        <!-- Master Feedback Form Frame -->
+        <div class="studio-card"
+            style="max-width: 550px; background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(191, 149, 63, 0.12); padding: 30px 25px; text-align: left; box-shadow: 0 20px 45px rgba(0,0,0,0.4);">
+            <h2
+                style="font-size: 1.4rem; font-weight: 800; margin-bottom: 20px; font-family: 'Playfair Display', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                Sincere Feedback Corner</h2>
+
+            <form onsubmit="handleFeedbackSubmit(event)"
+                style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;">
+                <input id="fb-user-name" type="text" placeholder="Your Name / Organization"
+                    style="width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); padding: 14px; border-radius: 12px; color: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.3s;"
+                    onfocus="this.style.borderColor='#bf953f'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"
+                    required>
+                <textarea id="fb-user-text" rows="3" placeholder="Write your honest words here on your integrity..."
+                    style="width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.08); padding: 14px; border-radius: 12px; color: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.95rem; outline: none; resize: none; transition: border-color 0.3s;"
+                    onfocus="this.style.borderColor='#bf953f'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"
+                    required></textarea>
+
+                <button type="submit"
+                    style="width: 100%; background: var(--gold-gradient); color: #000000; border: none; padding: 14px; border-radius: 12px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(191,149,63,0.2); transition: transform 0.2s;"
+                    onmouseover="this.style.transform='scale(1.02)'" onmouseout
+                    Clyde="this.style.transform='scale(1)'">Publish Live Words</button>
+            </form>
+
+            <!-- Real-Time Stream Header -->
+            <div
+                style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.3); font-weight: 700; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                Live Feed Stream</div>
+
+            <!-- Target Stream Feed Container -->
+            <div id="feedback-live-feed" style="max-height: 200px; overflow-y: auto; padding-right: 5px;">
+                <!-- Dynamically populated stream items -->
             </div>
-            <div style="background: rgba(124, 58, 237, 0.06); border-left: 3px solid #7c3aed; padding: 20px; border-radius: 14px; font-size: 1rem; line-height: 1.7; margin-bottom: 45px; color: #e4e4e7; font-style: italic;">
-                "Trust ek aisa heavy bug hai, jiska koi software patch nahi hota. Be careful."
-            </div>
-            <button class="studio-btn" onclick="goToPage3()">Enter Full Showroom</button>
+
+            <!-- Footer Advance Trigger Point -->
+            <button class="enter-showroom-btn"
+                style="width: 100%; margin-top: 25px; border-radius: 12px; font-size: 0.9rem;"
+                onclick="triggerPage5Transition()">Continue to Next Step</button>
         </div>
     </div>
+    <!-- 👑 PAGE 5: THE GRAND FINALE & THANK YOU PORTAL -->
+    <div id="final-screen" class="screen"
+        style="display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.6s ease;">
 
-    <!-- 💻 PAGE 3: SHOWROOM CORE -->
-    <div id="showroom-screen" style="display: none; width: 100%; min-height: 100vh; padding: 50px 24px; box-sizing: border-box;">
-        <div style="max-width: 1100px; margin: 0 auto 60px auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 25px;">
-            <div style="font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px;">
-                AHARIYA<span style="color: #7c3aed;">DEV</span>
-            </div>
-            <div style="display: flex; gap: 25px; font-size: 0.9rem; font-weight: 500;">
-                <a href="https://wa.me/923298480733" target="_blank" style="color: #f4f4f5; text-decoration: none; display: flex; align-items: center; gap: 6px;">🟢 Chat: <span style="color: #7c3aed;">0329_8480733</span></a>
-                <a href="https://www.tiktok.com/@Ahariya_dev" target="_blank" style="color: #f4f4f5; text-decoration: none; display: flex; align-items: center; gap: 6px;">🎵 TikTok: <span style="color: #db2777;">Ahariya_dev</span></a>
-            </div>
-        </div>
+        <div class="studio-card"
+            style="max-width: 550px; background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(191, 149, 63, 0.2); padding: 40px 30px; box-shadow: 0 25px 60px rgba(0,0,0,0.6); position: relative;">
 
-        <div id="dynamic-project-grid" class="asymmetric-grid">
-            <!-- JS Injector -->
+            <!-- Luxury Animated Heartbeat Indicator -->
+            <div
+                style="font-size: 2.5rem; margin-bottom: 15px; animation: pulseGlow 2s infinite alternate; text-align: center;">
+                👑</div>
+
+            <h2
+                style="font-size: 1.8rem; font-weight: 800; text-align: center; margin-bottom: 25px; font-family: 'Playfair Display', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px;">
+                Thank You For Visiting
+            </h2>
+
+            <!-- Target for Live Text Generation -->
+            <div id="live-final-box"
+                style="min-height: 200px; text-align: left; border-left: 2px solid rgba(191, 149, 63, 0.3); padding-left: 15px; margin-bottom: 30px;">
+            </div>
+
+            <!-- Ultimate Contact Card Reference Grid -->
+            <div
+                style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.03); padding: 15px; border-radius: 14px; text-align: center; margin-bottom: 35px;">
+                <div
+                    style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255,255,255,0.4); letter-spacing: 2px; margin-bottom: 5px;">
+                    Direct Developer Line</div>
+                <a href="https://wa.me/923288480733" target="_blank"
+                    style="font-size: 1.2rem; font-weight: 700; color: #bf953f; text-decoration: none; letter-spacing: 0.5px;">📞
+                    03288480733</a>
+            </div>
+
+            <!-- Ultimate Closure Action Button -->
+            <button class="enter-showroom-btn"
+                style="width: 100%; background: transparent; border: 1px solid #dc2626; color: #ff8585; border-radius: 12px; font-size: 0.95rem; letter-spacing: 2px;"
+                onmouseover="this.style.background='#dc2626'; this.style.color='#fff'; this.style.boxShadow='0 0 25px rgba(220,38,38,0.4)';"
+                onmouseout="this.style.background='transparent'; this.style.color='#ff8585'; this.style.boxShadow='none';"
+                onclick="closeAhariyaShowroom()">
+                Close Showroom ✕
+            </button>
         </div>
     </div>
-
     <script>
-        const MY_PROJECTS_DATABASE = [
-            { title: "⚡ Project_Alpha_Core", liveUrl: "https://example.com/demo1" },
-            { title: "💎 Aesthetic_Clock_UI", liveUrl: "https://example.com/demo2" },
-            { title: "🔥 Python_Database_Mesh", liveUrl: "https://example.com/demo3" },
-            { title: "🛡️ Cyber_Secure_Panel", liveUrl: "https://example.com/demo4" },
-            { title: "⚙️ Matrix_Terminal_V2", liveUrl: "https://example.com/demo5" },
-            { title: "🎬 Mera Naya TikTok Clone", liveUrl: "https://example.com/demo6" }
+        // ✍️ Golden Live Typing Text Logic
+        const textToType = "Welcome to Ahariya Dev";
+        let index = 0;
+
+        function typeWelcomeText() {
+            if (index < textToType.length) {
+                document.getElementById("live-welcome-text").innerHTML += textToType.charAt(index);
+                index++;
+                setTimeout(typeWelcomeText, 90);
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            typeWelcomeText();
+        });
+
+        // 🎬 Cinematic Transition Effect
+        function triggerCinematicTransition() {
+            const btn = document.getElementById("enter-btn");
+            const overlay = document.getElementById("gold-wipe");
+            const welcomeScreen = document.getElementById("welcome-screen");
+
+            btn.classList.add("clicked");
+            overlay.style.animation = "goldFlashWipe 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards";
+
+            setTimeout(() => {
+                welcomeScreen.style.display = "none";
+                // Page 2 (Philosophy & Trust Log Screen) dynamically show karna
+                const logScreen = document.getElementById('log-screen');
+                logScreen.style.display = 'flex';
+                setTimeout(() => {
+                    logScreen.style.opacity = '1';
+                    // Start live clock and trust typing once page 2 loads
+                    initAhariyaClock();
+                    typeTrustText();
+                }, 50);
+            }, 600);
+        }
+
+        // 🕒 12-Hour Analog-Digital Luxury Clock Logic
+        function initAhariyaClock() {
+            const hourHand = document.getElementById('ahariya-hour');
+            const minHand = document.getElementById('ahariya-min');
+            const secHand = document.getElementById('ahariya-sec');
+
+            function updateClock() {
+                const now = new Date();
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+
+                // Calculate Rotation Degrees
+                const hrDeg = ((hours % 12) * 30) + (minutes * 0.5);
+                const minDeg = (minutes * 6) + (seconds * 0.1);
+                const secDeg = seconds * 6;
+
+                if (hourHand) hourHand.style.transform = `rotate(${hrDeg}deg)`;
+                if (minHand) minHand.style.transform = `rotate(${minDeg}deg)`;
+                if (secHand) secHand.style.transform = `rotate(${secDeg}deg)`;
+            }
+            setInterval(updateClock, 1000);
+            updateClock();
+        }
+
+        // ✍️ Live Typing Logic for Trust Box
+        const trustParagraphs = [
+            "Aapka har ek project, har ek idea aur aapka poora data yahan 100% safe aur secure rahega. Khuli kitab ki tarah kaam hoga, koi chupa hua jhoot nahi.",
+            "Aapko aapki har special event (Birthday, Anniversary, ya Corporate launch) par milen gey shaandar exclusive discounts, taake premium design aapke budget mein fit ho sake.",
+            "Kaam khatam hone ke baad apna feedback lazmi dena, taake baki aane wale logon ko bhi trust ho sake. Feedback box mein jo dil chahe likhna, par apne imaan par sachi baat likhni hogi, kyunki mujhe jhooti tareef nahi, saccha rishta banana hai."
         ];
 
-        function goToPage2() {
-            document.getElementById('welcome-screen').style.display = 'none';
-            document.getElementById('log-screen').style.display = 'flex';
+        let currentPara = 0;
+        let charIndex = 0;
+
+        function typeTrustText() {
+            const targetDiv = document.getElementById("live-trust-box");
+            if (currentPara < trustParagraphs.length) {
+                if (charIndex === 0) {
+                    const p = document.createElement("p");
+                    p.style.marginBottom = "15px";
+                    p.style.lineHeight = "1.8";
+                    p.style.color = "#a1a1aa";
+                    p.style.fontSize = "1.02rem";
+                    p.id = `trust-p-${currentPara}`;
+                    targetDiv.appendChild(p);
+                }
+
+                const currentP = document.getElementById(`trust-p-${currentPara}`);
+                currentP.innerHTML += trustParagraphs[currentPara].charAt(charIndex);
+                charIndex++;
+
+                setTimeout(typeTrustText, 35); // Smooth natural typing speed
+            } else {
+                currentPara++;
+                charIndex = 0;
+                setTimeout(typeTrustText, 500); // Small pause between paragraphs
+            }
         }
 
-        function goToPage3() {
-            document.getElementById('log-screen').style.display = 'none';
-            document.getElementById('showroom-screen').style.display = 'block';
-            buildGrid();
+        // 🎬 Transition to Page 3 (Showroom)
+        function triggerShowroomTransition() {
+            const overlay = document.getElementById("gold-wipe");
+            const logScreen = document.getElementById("log-screen");
+
+            overlay.style.animation = "goldFlashWipe 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards";
+
+            setTimeout(() => {
+                logScreen.style.display = "none";
+                // Page 3 ki screen ka injector yahan space lega dynamic calling ke liyealert("Page 2 Success! Ab screen saaf ho kar Page 3 khule ga.");
+                // Page 3 (Main Showroom Screen) show karna aur grid build karna
+                const showroomScreen = document.getElementById('showroom-screen');
+                showroomScreen.style.display = 'block';
+                buildAhariyaShowroom();
+
+                setTimeout(() => {
+                    showroomScreen.style.opacity = '1';
+                }, 50);
+            }, 600);
         }
 
-        function buildGrid() {
-            const grid = document.getElementById('dynamic-project-grid');
-            grid.innerHTML = '';
-            MY_PROJECTS_DATABASE.forEach((p) => {
+        // 🗂️ MASTER PROJECT DATABASE (Yahan aap jitne chahein titles aur links add karte jayen)
+        const A_DEV_PROJECTS = [
+            { title: "⚡ Project_Alpha_Core", liveUrl: "https://example.com" },
+            { title: "💎 Aesthetic_Clock_UI", liveUrl: "https://example.com" },
+            { title: "🔥 Python_Database_Mesh", liveUrl: "https://example.com" },
+            { title: "🛡️ Cyber_Secure_Panel", liveUrl: "https://example.com" },
+            { title: "⚙️ Matrix_Terminal_V2", liveUrl: "https://example.com" }
+        ];
+
+        // 🛠️ Dynamic Grid Builder with Live In-Card Frame Output
+        function buildAhariyaShowroom() {
+            const grid = document.getElementById('ahariya-dynamic-grid');
+            grid.innerHTML = ''; // Clear previous preview data
+
+            A_DEV_PROJECTS.forEach((project, index) => {
                 grid.innerHTML += `
-                    <div style="background: var(--glass-card); border: 1px solid var(--glass-border); border-radius: 24px; padding: 28px; min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); transition: transform 0.3s ease;">
+                    <div style="background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 15px 35px rgba(0,0,0,0.3); transition: transform 0.3s ease;">
                         <div>
-                            <h3 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 20px; font-weight: 700; letter-spacing: -0.3px;">${p.title}</h3>
-                            <div style="background: rgba(0,0,0,0.2); height: 110px; border-radius: 16px; display: flex; justify-content: center; align-items: center; border: 1px solid rgba(255,255,255,0.02);">
-                                <a href="${p.liveUrl}" target="_blank" style="background: #ffffff; color: #000000; padding: 10px 22px; border-radius: 12px; text-decoration: none; font-size: 0.85rem; font-weight: 700; box-shadow: 0 4px 15px rgba(255,255,255,0.1);">Explore Output</a>
+                            <!-- Project Headline Title -->
+                            <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 15px; border-left: 3px solid #bf953f; padding-left: 10px;">
+                                ${project.title}
+                            </h3>
+                            
+                            <!-- Live Output Frame Box Wrapper -->
+                            <div id="frame-wrapper-${index}" style="background: rgba(0,0,0,0.4); height: 200px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;">
+                                <div id="placeholder-text-${index}" style="color: rgba(255,255,255,0.25); font-size: 0.9rem; font-weight: 500; text-align: center; padding: 15px;">
+                                    Click Below to Load Live Output Inside Box
+                                </div>
+                                <iframe id="output-frame-${index}" src="" style="width: 100%; height: 100%; border: none; display: none;"></iframe>
                             </div>
                         </div>
-                    </div>`;
+
+                        <!-- Action Control Switch -->
+                        <button onclick="loadLiveFrame(${index}, '${project.liveUrl}')" style="width: 100%; background: rgba(191, 149, 63, 0.1); border: 1px solid #bf953f; color: #fcf6ba; padding: 12px; border-radius: 12px; font-weight: 600; font-size: 0.88rem; cursor: pointer; letter-spacing: 0.5px; transition: all 0.3s ease;">
+                            Check Live Output
+                        </button>
+                    </div>
+                `;
             });
+        }
+
+        // 🔄 Core Frame Interactivity Engine (Loads URL inside the specific box)
+        function loadLiveFrame(index, url) {
+            const placeholder = document.getElementById(`placeholder-text-${index}`);
+            const frame = document.getElementById(`output-frame-${index}`);
+
+            if (placeholder && frame) {
+                placeholder.style.display = 'none';
+                frame.style.display = 'block';
+                frame.src = url; // Injects target live coding output url instantly
+            }
+        }
+
+        // 🎬 Transition to Feedback Screen (Wipes Screen Clean)
+        function triggerFeedbackTransition() {
+            const overlay = document.getElementById("gold-wipe");
+            const showroomScreen = document.getElementById("showroom-screen");
+
+            overlay.style.animation = "goldFlashWipe 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards";
+
+            setTimeout(() => {
+                showroomScreen.style.display = "none";
+                // Page 4 (Feedback Form) yahan se continuous link hoga
+                // Page 4 (Feedback Board) dynamically show karna
+                const feedbackScreen = document.getElementById('feedback-screen');
+                feedbackScreen.style.display = 'flex';
+                setTimeout(() => {
+                    feedbackScreen.style.opacity = '1';
+                    renderFeedbacks(); // Load existing feedbacks on entry
+                }, 50);
+            }, 600);
+        }
+
+        // 📋 FEEDBACK STORAGE ENGINE (Simulated via LocalStorage so it never resets)
+        let DEFAULT_FEEDBACKS = [
+            { name: "Zeeshan Ali", text: "Ahariya Dev se website banwayi thi, birthday discount bhi mila aur code 100% clean hai. Highly recommended!" },
+            { name: "Aisha Khan", text: "Bohot hi honest insan hain. Jo wada kiya wahi deliver kiya. Data bilkul safe hai yahan." }
+        ];
+
+        // Load feedbacks from localstorage or use defaults
+        if (!localStorage.getItem('ahariya_feedbacks')) {
+            localStorage.setItem('ahariya_feedbacks', JSON.stringify(DEFAULT_FEEDBACKS));
+        }
+
+        // 🛠️ Render Feedback Feed Lists
+        function renderFeedbacks() {
+            const container = document.getElementById('feedback-live-feed');
+            const list = JSON.parse(localStorage.getItem('ahariya_feedbacks'));
+            container.innerHTML = '';
+
+            list.forEach(item => {
+                container.innerHTML += `
+                    <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 15px 20px; border-radius: 14px; margin-bottom: 12px; backdrop-filter: blur(5px);">
+                        <div style="font-weight: 700; color: #fcf6ba; font-size: 0.95rem; margin-bottom: 5px;">${item.name}</div>
+                        <div style="color: #d4d4d8; font-size: 0.9rem; line-height: 1.5;">${item.text}</div>
+                    </div>
+                `;
+            });
+        }
+
+        // 📥 Submit Action Trigger
+        function handleFeedbackSubmit(event) {
+            event.preventDefault();
+            const nameInput = document.getElementById('fb-user-name');
+            const textInput = document.getElementById('fb-user-text');
+
+            if (nameInput.value.trim() === '' || textInput.value.trim() === '') {
+                alert("Please fill your honest details.");
+                return;
+            }
+
+            const currentList = JSON.parse(localStorage.getItem('ahariya_feedbacks'));
+            currentList.unshift({
+                name: nameInput.value.trim(),
+                text: textInput.value.trim()
+            });
+
+            localStorage.setItem('ahariya_feedbacks', JSON.stringify(currentList));
+            renderFeedbacks(); // Refresh stream instantly
+
+            // Reset Inputs
+            nameInput.value = '';
+            textInput.value = '';
+        }
+
+        // 🎬 Transition to Page 5 (Wipes Screen Clean)
+        function triggerPage5Transition() {
+            const overlay = document.getElementById("gold-wipe");
+            const feedbackScreen = document.getElementById("feedback-screen");
+
+            overlay.style.animation = "goldFlashWipe 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards";
+
+            setTimeout(() => {
+                feedbackScreen.style.display = "none";
+                // Page 5 ka framework yahan se start hoga continuous link mein
+                // Page 5 (The Grand Finale) dynamically show karna
+                const finalScreen = document.getElementById('final-screen');
+                finalScreen.style.display = 'flex';
+                setTimeout(() => {
+                    finalScreen.style.opacity = '1';
+                    typeFinalThankYouText(); // Start the grand finale text animation
+                }, 50);
+            }, 600);
+        }
+
+        // ✍️ Grand Finale Live Typing Text Logic
+        const finalParagraphs = [
+            "Mera showroom dekhne ka aur apna qeemti waqt dene ka bohot bohot shukriya! ❤️",
+            "Main bohot shiddat se aapka intazar kar raha hoon ke kab aap mujhse contact karenge aur apni Girlfriend, Best Friend, Brother, Sister ya kisi bhi special person ke liye ek shaandar custom high-end unique link ya website banwayenge.",
+            "Yahan aapka har ek concept, identity aur data hamesha ki tarah 100% safe aur privacy ke saath lock rahega. Aur haan, unke birthday ya kisi bhi special anniversary par aapko milenge kamaal ke exclusive premium discounts!"
+        ];
+
+        let finalParaIndex = 0;
+        let finalCharIndex = 0;
+
+        function typeFinalThankYouText() {
+            const targetContainer = document.getElementById("live-final-box");
+            if (finalParaIndex < finalParagraphs.length) {
+                if (finalCharIndex === 0) {
+                    const p = document.createElement("p");
+                    p.style.marginBottom = "15px";
+                    p.style.lineHeight = "1.8";
+                    p.style.color = "#d4d4d8";
+                    p.style.fontSize = "1.02rem";
+                    p.id = `final-p-${finalParaIndex}`;
+                    targetContainer.appendChild(p);
+                }
+
+                const currentP = document.getElementById(`final-p-${finalParaIndex}`);
+                currentP.innerHTML += finalParagraphs[finalParaIndex].charAt(finalCharIndex);
+                finalCharIndex++;
+
+                setTimeout(typeFinalThankYouText, 35); // Natural fluid typing speed
+            } else {
+                finalParaIndex++;
+                finalCharIndex = 0;
+                setTimeout(typeFinalThankYouText, 500); // Elegant short pause between statements
+            }
+        }
+
+        // 🚪 Ultimate Exit Matrix Trigger
+        function closeAhariyaShowroom() {
+            // Attempt standard browser window destruction
+            window.open('', '_self', '');
+            window.close();
+
+            // Fallback safe escape routing if browser blocks direct script closure
+            setTimeout(() => {
+                window.location.href = "https://www.google.com";
+            }, 100);
         }
     </script>
 </body>
+
 </html>
